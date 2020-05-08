@@ -60,7 +60,7 @@ public class calculateExpression extends HttpServlet {
                 ops.pop(); 
             } 
             else if (tokens[i] == '+' || tokens[i] == '-' || 
-                     tokens[i] == '*' || tokens[i] == '/' || tokens[i]=='^') 
+                     tokens[i] == 'x' || tokens[i] == '/' || tokens[i]=='^') 
             { 
                 while (!ops.empty() && hasPrecedence(tokens[i], ops.peek())) 
                   values.push(applyOp(ops.pop(), values.pop(), values.pop())); 
@@ -79,7 +79,7 @@ public class calculateExpression extends HttpServlet {
             return false; 
         if (op1 == '^')
         	return false;
-        if ((op1 == '*' || op1 == '/') && (op2 == '+' || op2 == '-')) 
+        if ((op1 == 'x' || op1 == '/') && (op2 == '+' || op2 == '-')) 
             return false; 
         else
             return true; 
@@ -92,7 +92,7 @@ public class calculateExpression extends HttpServlet {
             return a + b; 
         case '-': 
             return a - b; 
-        case '*': 
+        case 'x': 
             return a * b; 
         case '/': 
             if (b == 0) 
